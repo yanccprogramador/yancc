@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://www.especializa.com.br/facelets/taglibs">
+      <ui:composition template="/template.xhtml">
+      <ui:define name="direita">
+         <p:growl showDetail="true" id="mensagens" autoUpdate="true" escape="true" rendered="true" showSummary="true" redisplay="true" severity="info"/>
+      </ui:define>
+  
+        <p:dataTable paginator="true" id="portfolio" value="#{projects.nomes}" var="n" style="width: 100%" scrollable="true" >
+          <p:column>
+             <p:graphicImage height="40px" width="40px"  url="resources/projetos/#{n.replaceAll('%20',' ')}/icone.png"/>
+          </p:column>
+        <p:column>
+           #{n} 
+        </p:column>
+        <p:column>
+        <h:form>
+          <f:ajax listener="#{projects.msg()}" render=":mensagens">
+          <p:commandButton value="Download" ajax="false" onclick="return confirm('Tem certeza que deseja fazer download, isso consumirá seus dados?');" action="#{projects.msg}"><p:fileDownload value="#{projects.download(n)}"/></p:commandButton>
+          </f:ajax>
+       </h:form>
+        </p:column>
+        
+        </p:dataTable>
+        <a href="https://github.com/yanccprogramador/">Veja demais projetos</a>
+      
+      </ui:composition>
+</html>	

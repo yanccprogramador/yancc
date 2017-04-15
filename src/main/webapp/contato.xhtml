@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+      <ui:composition template="/template.xhtml">
+      <ui:define name="direita">
+         <p:growl showDetail="true" id="mensagens" autoUpdate="true" escape="true" rendered="true" showSummary="true" redisplay="true" severity="info,error"/>
+        
+      </ui:define>
+   
+      <h:form>
+ <p:panel header="Contato" style="width: 100%;">
+ <h:panelGrid columns="2">
+ <h:outputText value="Digite seu Nome: " />
+				<h:inputText value="#{indexController.eu.p.nome}" />
+				<h:outputText value="Digite seu email: " />
+				<h:inputText value="#{indexController.eu.p.email}" size="66" />
+ <h:outputText value="Titulo: "/>
+ <h:inputText value="#{indexController.mensagem.titulo}" size="66"/>
+ <h:outputText value="Mensagem: "/>
+ <h:inputTextarea value="#{indexController.mensagem.mensagem}" cols="63" rows="10"/>
+ </h:panelGrid>
+ <p:commandButton value="Enviar e-mail"  action="#{indexController.enviaEmail}" ajax="false"/>
+ 
+ </p:panel>
+ </h:form>
+      
+      </ui:composition>
+</html>	

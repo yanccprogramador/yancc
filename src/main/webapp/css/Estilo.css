@@ -1,0 +1,173 @@
+@CHARSET "UTF-8";
+body, div {
+	margin: 0;
+	padding: 0;
+	font: normal 12px Arial;
+}
+.img{
+		width:90px;
+	height:90px;
+}
+ul#menu > li { 
+				display: inline;
+				left:350pt;
+				top:0pt;
+				list-style:none;
+		       padding:0;
+			   margin:0;
+			   font: bold 30px Chiller;
+			   color: #FFFFFF;
+			   text-decoration:none;
+                width: 125px;
+                padding: 4px;
+				position: relative;
+			}
+			.carrosel{
+			  width: 80px;
+			  height: 200px;
+			}
+  
+		a{
+		   font: bold 30px Chiller;
+			   color: #FFFFFF;
+			   text-decoration:none;
+		}
+            li:hover{ background-color: #000;
+                      color:white;
+					}
+
+body {
+
+		color:#fff;
+    margin: 0 0 40px; /* altura do seu footer */
+	background-color:#000;
+
+
+}
+
+img {
+	margin: 10px;
+}
+#topo {
+	position:absolute;
+	 font: bold 12px Chiller;
+	width: 100%;
+	top: 0pt;
+	height: 100px;
+	background-color:#4169E1;
+	
+}
+
+#topo > img {
+	border-radius: 15px;
+	-moz-border-radius: 15px;
+	float: left;
+}
+
+#topo > form {
+	
+	background-color:#fff;
+	padding-top: 50px;
+	padding-right: 10px;
+	float: right;
+}
+#esquerda {
+	position:absolute;
+	top:100pt;
+	left:0pt;
+	margin-left: 10px;
+	float:left;
+	width: 205px;
+	color:#fff;
+	background-color: #000;
+	padding: 5px;
+	
+}
+
+.logo{
+	position:absolute;
+	top:0pt;
+	left:0pt;
+	float:left;
+	width:90px;
+	height:90px;
+}
+
+
+#centro {
+	position:absolute;
+	top:100pt;
+	bottom:60px;
+	margin-left: 240px;
+	color: #ffffff;
+}
+
+#direita {
+	position:absolute;
+	top:100pt;
+	right:0pt;
+	float: right;
+	background-color: #000;
+	padding: 10px;
+	color: #fff;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+
+#rodape {
+	background-color: #4169E1;
+	color: #fff;
+	height: 40px;
+	padding: 10px;
+	position:absolute;
+	bottom: 0pt;
+	width: 100%;
+	font: bold 18px Chiller;
+    text-shadow: 1px 1px 1px #000;
+}
+
+#conteudo > div {
+	margin-bottom: 50px;
+}
+
+table {
+	width: 50%;
+	border: 1px dotted #000;
+	margin: 5px;
+}
+
+tr > th {
+	background-color: #DDD;
+}
+
+tr.linha1 > td {
+	background-color: #EEE;
+}
+
+tr.linha2 > td {
+	background-color: #FFF;
+}
+
+.info {
+	color: #00F;
+}
+.warn {
+	color: #b0b000;
+}
+.erro {
+	color: #F00;
+}
+.fatal {
+	color: #F00;
+	font-weight: bold;
+}
+
+#primefaces {
+	position:absolute;
+	width: 70%;
+}
+

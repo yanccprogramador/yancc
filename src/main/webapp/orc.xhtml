@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="direita">
+		<p:growl showDetail="true" id="mensagens" autoUpdate="true"
+			escape="true" rendered="true" showSummary="true" redisplay="true"
+			severity="info" />
+	</ui:define>
+     <br />
+        Faça seu orçamento agora, sem compromisso , e nos envie caso tenha interesse
+        <br />
+        Este orçamento não é exato, porém o preço estará entre o intervalo em 90% das vezes
+        <br />
+        Lembrando que você que está definindo o que contém no seu projeto. Se você mudar , tudo irá mudar 
+       <br />
+		<br />
+		
+		<p:outputLabel  value="#{orc.valor}" id="vl" />
+
+
+
+	<h:form>
+		<f:ajax event="change"
+			render=":formSite :formSoft :formAnd :formCart :formBan :vl "
+			listener="#{orc.verificaSite}">
+			<p:panel visible="true" header="Que tipo é o seu projeto">
+
+				<p:selectOneRadio columns="3" id="tipo" layout="responsive"
+					value="#{orc.tipo}">
+					<f:selectItem itemLabel="Site" id="site" itemValue="site" />
+					<f:selectItem itemLabel="Software" id="soft" itemValue="soft" />
+					<f:selectItem itemLabel="Android" id="and" itemValue="android" />
+					<f:selectItem itemLabel="Logo" id="logo" itemValue="logo" />
+					<f:selectItem itemLabel="Banner" id="ban" itemValue="ban" />
+					<f:selectItem itemLabel="Cartão de visita" id="cart"
+						itemValue="cart" />
+				</p:selectOneRadio>
+
+
+				<p:outputLabel
+					value="Para outros Tipos de serviço entre em contato pela pagina de contatos" />
+			</p:panel>
+		</f:ajax>
+	</h:form>
+
+
+	<h:form id="formSite">
+		<f:ajax event="change" render="num">
+			<p:panel visible="true" header="o que contém na página"
+				rendered="#{orc.site}" id="pgSite">
+				<p:selectOneRadio columns="3" value="#{orc.tipoSite}">
+					<f:selectItem itemLabel="Pagina simples" id="pg" itemValue="pg" />
+					<f:selectItem itemLabel="Pagina dinâmica sem banco de dados"
+						id="pgD" itemValue="pgD" />
+					<f:selectItem itemLabel="Pagina dinâmica com banco de dados"
+						id="pgbd" itemvalue="pgBD" />
+				</p:selectOneRadio>
+				<f:ajax event="change" listener="#{orc.calcSite}" render=":vl :formE all">
+					<p:outputLabel value="Numero de páginas:" />
+					<p:inputNumber id="num" value="#{orc.num}"
+						label="Numero de paginas" />
+				</f:ajax>
+			</p:panel>
+		</f:ajax>
+	</h:form>
+	<h:form id="formSoft">
+		<f:ajax event="change" render="numFunc">
+			<p:panel visible="true" header="Como será o software"
+				rendered="#{orc.soft}" id="pgSoft">
+				<p:selectOneRadio columns="3" value="#{orc.tipoSoft}">
+					<f:selectItem itemLabel="Software sem armazenamento de dados"
+						id="simples" itemValue="simples" />
+					<f:selectItem itemLabel="Software com banco de dados" id="bd"
+						itemValue="bd" />
+					<f:selectItem itemLabel="Software com partes na internet" id="net"
+						itemvalue="net" />
+				</p:selectOneRadio>
+				<f:ajax event="change" listener="#{orc.calcSoft}" render=":vl :formE all">
+					<p:outputLabel value="Numero de funcionalidades" />
+					<p:inputNumber id="numFunc" value="#{orc.numF}"
+						label="Numero de funcionalidades" />
+				</f:ajax>
+			</p:panel>
+		</f:ajax>
+	</h:form>
+	<h:form id="formAnd">
+		<p:panel visible="true" header="Qual é o tipo de aplicativo"
+			rendered="#{orc.app}" id="pgapp">
+			<p:selectOneRadio columns="3" value="#{orc.tipoApp}">
+				<f:selectItem itemLabel="Aplicativo Simples sem armazenamento"
+					id="simples" itemValue="simples" />
+				<f:selectItem itemLabel="Aplicativo com banco de dados" id="bd"
+					itemValue="bd" />
+				<f:selectItem itemLabel="Jogo android" id="jogo" itemvalue="jogo" />
+			</p:selectOneRadio>
+			<f:ajax event="change" listener="#{orc.calcApp}" render=":vl :formE all">
+				<p:outputLabel value="Numero de funcionalidades" />
+				<p:inputNumber id="numFunc2" value="#{orc.numF2}"
+					label="Numero de funcionalidades" />
+			</f:ajax>
+		</p:panel>
+	</h:form>
+	<h:form id="formCart">
+		<f:ajax event="change" listener="#{orc.preco}" render=":vl :formE">
+			<p:panel visible="true" header="Como será o modelo do cartão?"
+				rendered="#{orc.cart}" id="pgcart">
+				<p:selectOneRadio columns="3" value="#{orc.tipoCart}">
+					
+					<f:selectItem itemLabel="Só Frente" id="f" itemvalue="f" />
+					<f:selectItem itemLabel="Frente e verso" id="fv" itemValue="fv" />
+
+				</p:selectOneRadio>
+			</p:panel>
+		</f:ajax>
+	</h:form>
+	<h:form id="formBan">
+		<p:panel visible="true" header="Qual é o tipo do banner"
+			rendered="#{orc.ban}" id="pgban">
+			<f:ajax event="change" listener="#{orc.calcBan}" render=":vl :formE all">
+				<p:selectOneRadio columns="3" value="#{orc.tipoBan}">
+					<f:selectItem itemLabel="Banner para web" id="web" itemValue="web" />
+					<f:selectItem itemLabel="Banner para impressão" id="imp"
+						itemValue="imp" />
+				</p:selectOneRadio>
+
+
+			</f:ajax>
+		</p:panel>
+	</h:form>
+	<h:form id="formE">
+		<p:panel header="Envie orçamento" rendered="#{orc.valore()}">
+			
+			<h:panelGrid columns="2">
+			    <h:outputText value="Digite seu Nome: " />
+				<h:inputText value="#{indexController.eu.p.nome}" />
+				<h:outputText value="Digite seu email: " />
+				<h:inputText value="#{indexController.eu.p.email}" size="66" />
+				
+			</h:panelGrid>
+			<p:commandButton value="Enviar e-mail"
+				action="#{indexController.enviaorc()}" ajax="false" />
+				 </p:panel>
+ </h:form>
+</ui:composition>
+</html>
